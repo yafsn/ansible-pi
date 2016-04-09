@@ -1,0 +1,8 @@
+- name: Install ssh public keys
+  tags: ssh-install-pubkey
+  authorized_key:
+    user: pi
+    key: "{{ lookup('file', item )}}"
+  with_fileglob: 
+    - "~/.ssh/id_*.pub"
+    - "ssh_keys/*.pub"

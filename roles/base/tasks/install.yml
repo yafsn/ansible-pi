@@ -1,0 +1,21 @@
+- name: Install common packages
+  tags: install-common-packages
+  apt: 
+    name={{ item }} 
+    state=present 
+    update_cache=yes 
+    cache_valid_time=3600
+  with_items:
+    - "{{ common_packages }}"
+
+- name: Check if packages need to be autoremoved
+  tags: check-autoremove-needed
+  command: apt-get --dry-run autoremove
+  register: check_autoremove
+  changed_when: False
+
+- name: Autoremove unused packages
+  tags: execute-apt-autoremove
+  command: apt-get -y autoremove
+  when: "'packages will be REMOVED' in check_autoremove.stdout"
+

@@ -1,0 +1,3 @@
+*.retry
+roles/base/files/ssh_keys/*
+rpi.hosts
