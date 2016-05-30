@@ -1,6 +1,5 @@
 ---
+pi_hostname: 'NotRaspberry'
 pi_password: 'UniquePiPassword'
 wifi_ssid: 'MyWifiSsid'
 wifi_password: 'GoodWifiPassword'
-flightaware_userid: 'YourFlightawareId'
-flightaware_password: 'AnotherGoodPassword'
