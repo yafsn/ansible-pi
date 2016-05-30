@@ -11,5 +11,5 @@ common_packages:
   - rsync
 
 # update system and raspi on reboot
-rc_apt_commmand: "apt-get update && apt-get install --fix-broken --yes && apt-get dist-upgrade --yes"
+rc_apt_commmand: "apt-get update && apt-get install --fix-broken --yes"
 rc_rpi_command: "apt-get install --yes rpi-update"

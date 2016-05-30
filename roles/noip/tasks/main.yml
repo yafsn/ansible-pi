@@ -1,0 +1,28 @@
+---
+- name: Create noip directory
+  tags: create-noip-directory
+  file: 
+    path: "{{ noip_duc_dir }}"
+    state: directory
+    owner: pi
+    group: pi
+    mode: 0755
+
+- name: Unarchve noip tarball
+  tags: unarchive-noip-tarball
+  unarchive: 
+    src: "{{ noip_duc_url }}"
+    dest: "{{ noip_duc_dir }}"
+    copy: no
+    owner: pi
+    group: pi
+#  with_fileglob:
+#    - "{{ noip_duc_dir }}/*"
+
+#- name: Build noip client
+#  tags: build-noip-client
+#  command: {{ item }}
+#    chdir: "{{ noip_duc_dir }}"
+#  with_items:
+#    - sudo make
+#    - sudo make install
