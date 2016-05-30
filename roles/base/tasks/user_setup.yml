@@ -1,3 +1,8 @@
+- name: Set user password
+  tags: set-user-password
+  user: name=pi password="{{ pi_password }}"
+  when: pi_password is defined
+
 - name: Install ssh public keys
   tags: ssh-install-pubkey
   authorized_key:

@@ -1,3 +1,5 @@
 ---
-- include: ssh_setup.yml
-- include: install.yml
+- include: user_setup.yml
+- include: host_setup.yml
+- include: wpa_setup.yml
+- include: package_install.yml

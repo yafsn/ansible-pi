@@ -1,0 +1,3 @@
+---
+- name: restart lighttpd
+  action: service name=lighttpd state=restarted

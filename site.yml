@@ -7,4 +7,6 @@
   become_user: root
   roles:
     - base
-    - piaware
+    - dump1090
+    - flightaware # may require reboot to complete successfully
+    - flightradar24 # requires manual configuration, see README

@@ -1,0 +1,7 @@
+- name: Configure wpa supplicant
+  tags: configure-wpa-supplicant
+  template: src=templates/wpa_supplicant.conf.j2 dest={{ wpa_config }} mode=0600
+  notify:
+    - restart wpa supplicant
+  when: ( wifi_ssid is defined) and
+        ( wifi_password is defined)

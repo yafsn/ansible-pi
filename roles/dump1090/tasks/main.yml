@@ -1,0 +1,38 @@
+---
+- name: Add dump1090 key
+  tags: add-dump1090-key
+  apt_key: 
+    keyserver: "{{ dump1090_keyserver }}"
+    id: "{{ dump1090_public_key }}"
+
+- name: Add dump1090 repo
+  tags: add-dump1090-repo
+  apt_repository: 
+    repo: "{{ dump1090_repo }}" 
+    state: present 
+    filename: "{{ dump1090_package }}"
+
+- name: Install dump1090 package
+  tags: install-dump1090-package
+  apt: 
+    name: "{{ dump1090_package }}"
+    state: present 
+    update_cache: yes 
+    cache_valid_time: 600
+
+- name: Install dump1090 extra packages
+  tags: install-dump1090-extrapackages
+  apt: 
+    name: "{{ item }}"
+    state: present 
+    update_cache: yes 
+    cache_valid_time: 3600
+  with_items:
+    - "{{ dump1090_extra_packages }}"
+
+- name: Enable dump1090 mod
+  tags: enable-dump1090-mod
+  command: lighttpd-enable-mod dump1090
+  notify: restart lighttpd
+  register: command_result
+  failed_when: "'unknown' in command_result.stderr"

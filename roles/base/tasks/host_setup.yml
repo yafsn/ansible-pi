@@ -1,0 +1,17 @@
+- name: Configure local hostname
+  tags: configure-local-hostname
+  command: hostname {{ pi_hostname }}
+
+- name: Set hostname file
+  tags: set-hostname-file
+  shell: echo {{ pi_hostname }} > /etc/hostname
+
+- name: Update etc hosts
+  tags: update-etc-hosts
+  lineinfile: 
+    dest=/etc/hosts 
+    regexp='^127\.0\.1\.1' 
+    line='127.0.1.1\t{{ pi_hostname }}' 
+    owner=root 
+    group=root 
+    mode=0644

@@ -1,0 +1,18 @@
+---
+dns_server1: 208.67.222.222
+dns_server2: 208.67.220.220
+
+wifi_interface: wlan0
+wifi_driver: nl80211
+wpa_config: /etc/wpa_supplicant/wpa_supplicant.conf
+wpa_key: WPA-PSK
+wpa_pairwise: CCMP
+
+# packages not related to any specific role
+common_packages:
+  - htop
+  - rsync
+
+# update system and raspi on reboot
+rc_apt_commmand: "apt-get update && apt-get install --fix-broken --yes && apt-get dist-upgrade --yes"
+rc_rpi_command: "apt-get install --yes rpi-update"

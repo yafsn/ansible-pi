@@ -1,0 +1,23 @@
+---
+- name: Add flightradar24 key
+  tags: add-flightradar24-key
+  apt_key: 
+    keyserver: "{{ flightradar24_keyserver }}"
+    id: "{{ flightradar24_public_key }}"
+
+- name: Add flightradar24 repo
+  tags: add-flightradar24-repo
+  apt_repository: 
+    repo: "{{ flightradar24_repo }}" 
+    state: present 
+    filename: "{{ flightradar24_package }}"
+
+- name: Install flightradar24 package
+  tags: install-flightradar24-package
+  apt: 
+    name: "{{ flightradar24_package }}"
+    state: present 
+    update_cache: yes 
+    cache_valid_time: 3600
+    install_recommends: true
+    force: true

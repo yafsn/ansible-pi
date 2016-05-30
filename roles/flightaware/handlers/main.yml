@@ -1,0 +1,3 @@
+---
+- name: restart flightaware
+  action: service name={{ flightaware_service }} state=restarted

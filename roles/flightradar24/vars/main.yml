@@ -1,0 +1,6 @@
+---
+flightradar24_keyserver: pgp.mit.edu
+flightradar24_public_key: 40C430F5
+flightradar24_repo: 'deb http://repo.feed.flightradar24.com flightradar24 raspberrypi-stable'
+flightradar24_package: fr24feed
+flightradar24_service: fr24feed

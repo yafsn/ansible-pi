@@ -19,3 +19,8 @@
   command: apt-get -y autoremove
   when: "'packages will be REMOVED' in check_autoremove.stdout"
 
+- name: Update rc.local
+  tags: update-rc-local
+  template: src=templates/rc.local.j2 dest=/etc/rc.local mode=0755
+  when: ( rc_apt_commmand is defined) or
+        ( rc_rpi_command is defined)

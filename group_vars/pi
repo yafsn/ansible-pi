@@ -1,8 +1,0 @@
----
-dns_server1: 208.67.222.222
-dns_server2: 208.67.220.220
-
-# packages not related to any specific role
-common_packages:
-  - htop
-  - rsync

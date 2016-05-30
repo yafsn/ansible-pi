@@ -1,0 +1,17 @@
+---
+- name: Install flightaware package
+  tags: install-flightaware-package
+  apt: 
+    deb: "{{ flightaware_url }}/{{ flightaware_package }}"
+    state: present
+    install_recommends: true
+    force: true
+
+- name: Enable flightaware updates
+  tags: enable-flightaware-updates
+  command: piaware-config -autoUpdate 1 -manualUpdate 1
+
+- name: Configure flightaware user
+  tags: configure-flightaware-user
+  command: piaware-config -user {{ flightaware_userid }}
+  notify: restart flightaware

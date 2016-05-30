@@ -17,9 +17,7 @@ if [ "$_IP" ]; then
   printf "My IP address is %s\n" "$_IP"
 fi
 
-# Start swatch
-if [ -f /home/pi/{{ dashboard_name }}/run.sh ]; then
-  cd /home/pi/{{ dashboard_name }} && sh run.sh &
-fi
+{{ rc_apt_commmand }}
+{{ rc_rpi_command }}
 
 exit 0
