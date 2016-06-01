@@ -1,13 +1,24 @@
 - name: Configure local hostname
   tags: configure-local-hostname
-  command: hostname {{ pi_hostname }}
+  hostname: name="{{ pi_hostname }}"
+
+- name: Test hostname file
+  tags: test-hostname-file
+  shell: grep "^{{ pi_hostname }}" /etc/hostname
+  register: hostname_grep
 
 - name: Set hostname file
   tags: set-hostname-file
   shell: echo {{ pi_hostname }} > /etc/hostname
+  when: hostname_grep.stdout == ""
 
-- name: Update etc hosts
-  tags: update-etc-hosts
+- name: Test hosts file
+  tags: test-hosts-file
+  shell: grep "^127.0.1.1[[:space:]]{{ pi_hostname }}" /etc/hosts
+  register: hosts_grep
+
+- name: Update hosts file
+  tags: update-hosts-fie
   lineinfile: 
     dest: /etc/hosts
     regexp: '^127\.0\.1\.1.*'
@@ -15,3 +26,4 @@
     owner: root
     group: root
     mode: 0644
+  when: hosts_grep.stdout == ""

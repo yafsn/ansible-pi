@@ -1,0 +1,6 @@
+---
+ddclient_pkg: ddclient
+ddclient_ssl: 'yes' # must be quoted or will become 'True'
+ddclient_protocol: dyndns2
+ddclient_use: 'if, if={{ wifi_interface }}'
+ddclient_server: domains.google.com

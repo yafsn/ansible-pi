@@ -20,3 +20,5 @@ vi rpi.hosts
 
 # additional step for flightradar24 configuration on remote host
 ```fr24feed --signup```
+
+# ddclient assumes you are using google domains and want to register the wlan0 ip address

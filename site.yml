@@ -10,4 +10,4 @@
     - dump1090 # optional manual configuration, see README
     - flightaware # may require reboot to complete successfully
     - flightradar24 # requires manual configuration, see README
-    - noip
+    - ddclient # configure if defined per host

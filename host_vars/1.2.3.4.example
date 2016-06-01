@@ -1,5 +1,12 @@
 ---
+# host specific vars, not checked into git
+
 pi_hostname: 'NotRaspberry'
 pi_password: 'UniquePiPassword'
 wifi_ssid: 'MyWifiSsid'
 wifi_password: 'GoodWifiPassword'
+
+# ddclient variables
+ddclient_login: YourDdLogin
+ddclient_password: YourDdPassword
+ddclient_domain: YourDdDomain.com

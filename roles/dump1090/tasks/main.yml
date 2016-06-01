@@ -33,6 +33,8 @@
 - name: Enable dump1090 mod
   tags: enable-dump1090-mod
   command: lighttpd-enable-mod dump1090
+  args:
+    creates: /etc/lighttpd/conf-enabled/89-dump1090.conf
   notify: restart lighttpd
-  register: command_result
-  failed_when: "'unknown' in command_result.stderr"
+  #register: command_result
+  #failed_when: 'unknown' in command_result.stderr
