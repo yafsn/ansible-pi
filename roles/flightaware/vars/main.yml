@@ -3,3 +3,5 @@ flightaware_version: '2.1-5'
 flightaware_url: http://flightaware.com/adsb/piaware/files
 flightaware_service: piaware
 flightaware_package: "{{ flightaware_service }}_{{ flightaware_version }}_armhf.deb"
+flightaware_autoupdate: true
+flightaware_manualupdate: true

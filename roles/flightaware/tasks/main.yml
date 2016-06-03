@@ -7,9 +7,10 @@
     install_recommends: true
     force: true
 
-- name: Update flightaware config
-  tags: update-flightaware-config
-  command: piaware-config -autoUpdate 1 -manualUpdate 1 -user {{ flightaware_userid }}
-  notify: restart flightaware
-  args:
-    creates: /root/.piaware
+- name: Template piaware config 
+  tags: template-piaware-config
+  template: 
+    src: piaware.j2
+    dest: /root/.piaware
+  notify: 
+    - restart flightaware

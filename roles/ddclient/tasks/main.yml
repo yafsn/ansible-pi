@@ -5,15 +5,6 @@
     state: present
   with_items: 
     "{{ ddclient_pkg }}"
-  when: ( 'ddclient_login' is defined ) and
-        ( 'ddclient_password' is defined) and
-        ( 'ddclient_domain' is defined )
-
-- name: Check ddclient install
-  tags: check-ddclient-install
-  stat: 
-    path: /usr/sbin/ddclient
-  register: ddclient_bin
 
 - name: Template ddclient config 
   tags: template-ddclient-config
@@ -22,5 +13,3 @@
     dest: /etc/ddclient.conf
   notify: 
     - restart ddclient
-  when:
-    ddclient_bin.stat is defined

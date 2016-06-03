@@ -8,6 +8,6 @@
   roles:
     - base
     - dump1090 # optional manual configuration, see README
-    - flightaware # may require reboot to complete successfully
     - flightradar24 # requires manual configuration, see README
-    - ddclient # configure if defined per host
+    - { role: flightaware, when: 'flightaware_userid is defined' } # only run if configured
+    - { role: ddclient, when: 'ddclient_userid is defined' } # only run if configured

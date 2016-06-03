@@ -6,6 +6,7 @@
   tags: test-hostname-file
   shell: grep "^{{ pi_hostname }}" /etc/hostname
   register: hostname_grep
+  ignore_errors: true
 
 - name: Set hostname file
   tags: set-hostname-file
@@ -16,6 +17,7 @@
   tags: test-hosts-file
   shell: grep "^127.0.1.1[[:space:]]{{ pi_hostname }}" /etc/hosts
   register: hosts_grep
+  ignore_errors: true
 
 - name: Update hosts file
   tags: update-hosts-fie

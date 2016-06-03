@@ -1,0 +1,14 @@
+# configured by ansible
+{% if flightaware_autoupdate is defined %}
+autoUpdate 1
+{% else %}
+autoUpdate 0
+{% endif %}
+{% if flightaware_manualupdate is defined %}
+manualUpdate 1
+{% else %}
+manualUpdate 0
+{% endif %}
+{% if flightaware_userid is defined %}
+user {{ flightaware_userid }}
+{% endif %}
