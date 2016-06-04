@@ -7,11 +7,15 @@ psk="{{ wifi_password }}"
 proto=RSN
 
 # Key management type can be: WPA-PSK or WPA-EAP (Pre-Shared or Enterprise)
-key_mgmt={{ wpa_key }}
+key_mgmt={{ wpa_keymgmt }}
 
 # Pairwise can be CCMP or TKIP (for WPA2 or WPA1)
 pairwise={{ wpa_pairwise }}
 
 #Authorization option should be OPEN for both WPA1/WPA2 (in less commonly used are SHARED and LEAP)
 auth_alg=OPEN
+
+# used to configure a network block to a hidden wireless SSID
+scan_ssid=1
+
 }
