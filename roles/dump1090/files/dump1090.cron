@@ -1,0 +1,4 @@
+# configured by ansible
+
+# check dump1090 service and restart if needed
+*/5 * * * * pi /home/pi/dump1090-check.sh

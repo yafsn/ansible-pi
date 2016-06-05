@@ -2,7 +2,7 @@
 wifi_interface: wlan0
 wifi_driver: nl80211
 wpa_config: /etc/wpa_supplicant/wpa_supplicant.conf
-wpa_key: WPA-PSK
+wpa_keymgmt: WPA-PSK
 wpa_pairwise: CCMP
 
 # packages not related to any specific role

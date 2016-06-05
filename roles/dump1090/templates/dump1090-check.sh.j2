@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# configured by ansible
+# simple shell script to confirm dump1090 is running
+
+sudo service {{ dump1090_package }} status | grep "{{ dump1090_status_string }}" > /dev/null
+
+if [ $? -ne 0 ]; then
+    sudo service {{ dump1090_package }} restart
+    sudo logger --tag dump1090-check.sh "Restarted {{ dump1090_package }} because it did not return \"{{ dump1090_status_string }}\""
+fi
