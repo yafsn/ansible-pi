@@ -3,5 +3,6 @@ dump1090_keyserver: keys.gnupg.net
 dump1090_public_key: 4D731812
 dump1090_repo: 'deb http://repo.mutability.co.uk/raspbian wheezy rpi'
 dump1090_package: dump1090-mutability
+dump1090_status_string: 'active (running)'
 dump1090_extra_packages:
   - lighttpd

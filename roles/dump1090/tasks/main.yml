@@ -36,5 +36,21 @@
   args:
     creates: /etc/lighttpd/conf-enabled/89-dump1090.conf
   notify: restart lighttpd
-  #register: command_result
-  #failed_when: 'unknown' in command_result.stderr
+
+- name: Install dump1090 script
+  tags: install-dump1090-script
+  template:
+    src: dump1090-check.sh.j2
+    dest: "/home/pi/dump1090-check.sh"
+    owner: pi
+    group: pi
+    mode: 0755
+
+- name: Install dump1090 cron
+  tags: install-dump1090-cron
+  copy:
+    src: dump1090.cron
+    dest: "/etc/cron.d/dump1090-check"
+    owner: root
+    group: root
+    mode: 0644
