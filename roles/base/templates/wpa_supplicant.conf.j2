@@ -1,21 +1,26 @@
+# configured by ansible
+
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+
 update_config=1
+
 network={
-ssid="{{ wifi_ssid }}"
-psk="{{ wifi_password }}"
-# Protocol type can be: RSN (for WPA2) and WPA (for WPA1)
-proto=RSN
+    # Network and credentials
+    ssid="{{ wifi_ssid }}"
+    psk="{{ wifi_password }}"
 
-# Key management type can be: WPA-PSK or WPA-EAP (Pre-Shared or Enterprise)
-key_mgmt={{ wpa_keymgmt }}
+    # Protocol type can be: RSN (for WPA2) and WPA (for WPA1)
+    proto=RSN
 
-# Pairwise can be CCMP or TKIP (for WPA2 or WPA1)
-pairwise={{ wpa_pairwise }}
+    # Key management type can be: WPA-PSK or WPA-EAP (Pre-Shared or Enterprise)
+    key_mgmt={{ wpa_keymgmt }}
 
-#Authorization option should be OPEN for both WPA1/WPA2 (in less commonly used are SHARED and LEAP)
-auth_alg=OPEN
+    # Pairwise can be CCMP or TKIP (for WPA2 or WPA1)
+    pairwise={{ wpa_pairwise }}
 
-# used to configure a network block to a hidden wireless SSID
-scan_ssid=1
+    #Authorization option should be OPEN for both WPA1/WPA2 (in less commonly used are SHARED and LEAP)
+    auth_alg=OPEN
 
+    # used to configure a network block to a hidden wireless SSID
+    scan_ssid=1
 }

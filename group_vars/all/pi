@@ -8,6 +8,7 @@ wpa_pairwise: CCMP
 # packages not related to any specific role
 common_packages:
   - htop
+  - ntpdate
   - rsync
 
 # update system and raspi on reboot

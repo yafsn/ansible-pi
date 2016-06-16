@@ -1,0 +1,18 @@
+- name: Configure wpa supplicant
+  tags: configure-wpa-supplicant
+  template: src=templates/wpa_supplicant.conf.j2 dest={{ wpa_config }} mode=0600
+  notify:
+    - restart wpa supplicant
+  when: ( wifi_ssid is defined) and
+        ( wifi_password is defined)
+
+- name: Configure network interfaces
+  tags: configure-network-interfaces
+  template: src=interfaces.j2 dest=/etc/network/interfaces mode=0600
+  register: reload_wifi_interface
+  when: ( wifi_interface is defined)
+
+- name: Reload wifi interface
+  tags: reload-wifi-interface
+  shell: ifdown {{ wifi_interface }}; ifup {{ wifi_interface }}
+  when: ( reload_wifi_interface is defined )

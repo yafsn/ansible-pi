@@ -1,5 +1,5 @@
 ---
 - include: user_setup.yml
 - include: host_setup.yml
-- include: wpa_setup.yml
+- include: wifi_setup.yml
 - include: package_install.yml
