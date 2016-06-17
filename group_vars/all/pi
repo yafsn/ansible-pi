@@ -10,6 +10,10 @@ common_packages:
   - htop
   - ntpdate
   - rsync
+  - screen
+
+dns_server_1: 208.67.222.222
+dns_server_2: 208.67.220.220
 
 # update system and raspi on reboot
 rc_apt_commmand: "apt-get update && apt-get install --fix-broken --yes"

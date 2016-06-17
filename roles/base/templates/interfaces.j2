@@ -10,5 +10,6 @@ iface eth0 inet manual
 
 allow-hotplug {{ wifi_interface }}
 iface {{ wifi_interface }} inet dhcp
+dns-nameservers {{ dns_server_1 }} {{ dns_server_2 }}
 pre-up wpa_supplicant -Dwext -i {{ wifi_interface }} -c /etc/wpa_supplicant/wpa_supplicant.conf -B -P /var/run/wpa_supplicant.{{ wifi_interface }}.pid
 post-down killall -q wpa_supplicant
