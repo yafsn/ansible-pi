@@ -4,3 +4,4 @@ rpi.hosts
 group_vars/all/secret
 host_vars/*
 !host_vars/1.2.3.4.example
+roles/splunk/files/*.tgz

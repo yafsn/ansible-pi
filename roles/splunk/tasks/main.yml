@@ -1,0 +1,21 @@
+---
+- name: Check for splunk tarball
+  tags: stat-splunktarball-path
+  local_action: stat path={{ splunk_file_path }} get_md5=yes
+  register: stat_splunk_tarball
+
+- name: Check splunk tarball exists
+  tags: check-splunktarball-exists
+  fail: msg="Splunk tarball not found at {{ splunk_file_path }}, exiting."
+  when: stat_splunk_tarball.stat.exists != true
+
+- name: Check splunk tarball md5
+  tags: check-splunktarball-md5
+  fail: msg="Splunk tarball MD5 does not match expected value - {{ splunk_md5 }}, exiting."
+  when: stat_splunk_tarball.stat.md5 != "{{ splunk_md5 }}"
+
+- name: Unarchive splunk tarball
+  tags: unarchive-splunktarball-remote
+  unarchive:
+    src={{ splunk_file_path }}
+    dest=/opt

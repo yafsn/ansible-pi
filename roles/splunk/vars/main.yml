@@ -1,0 +1,4 @@
+---
+splunk_tarball: forwarder-for-linux-arm-raspberry-pi_10.tgz
+splunk_md5: b73e4c63f8c33e8116884ced64df90dd
+splunk_file_path: "{{ playbook_dir }}/roles/splunk/files/{{ splunk_tarball }}"
